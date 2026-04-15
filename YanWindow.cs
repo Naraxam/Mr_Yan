@@ -78,7 +78,13 @@ public static class YanWindow
             {
                 try
                 {
-                    using var doc    = JsonDocument.Parse(args.WebMessageAsJson);
+                    // WebMessageAsJson is the message serialized as JSON.
+                    // If JS posted a plain string, it arrives double-quoted — unwrap it first.
+                    var raw = args.WebMessageAsJson;
+                    if (raw.StartsWith('"'))
+                        raw = System.Text.Json.JsonSerializer.Deserialize<string>(raw) ?? raw;
+
+                    using var doc    = JsonDocument.Parse(raw);
                     var       action = doc.RootElement.GetProperty("action").GetString();
 
                     switch (action)

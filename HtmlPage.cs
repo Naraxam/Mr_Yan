@@ -198,7 +198,7 @@ var ipc = (function(){
   try{ return !!(window.chrome && window.chrome.webview); }catch(e){ return false; }
 })();
 
-function ipcSend(obj){ if(ipc) window.chrome.webview.postMessage(JSON.stringify(obj)); }
+function ipcSend(obj){ if(ipc) window.chrome.webview.postMessage(obj); }
 
 // ── Toast ─────────────────────────────────────────────────────────────────────
 function toast(msg){
