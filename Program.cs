@@ -76,6 +76,7 @@ app.MapGet("/api/events", async (LogStore log, HttpContext ctx, CancellationToke
 app.MapGet("/api/state", (AppState s) => Results.Json(new
 {
     s.Running, s.PollMinutes, s.RepostMinutes, s.PollsRun, s.PostedToday,
+    s.Zone,
     Uptime     = s.UptimeString,
     LastPollAt = s.LastPollTime,
     NextPollAt = s.NextPollTime,

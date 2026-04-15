@@ -110,6 +110,7 @@ public class NwsAlertProps
 public class AppSettings
 {
     public string WebhookUrl            { get; set; } = "";
+    public string Zone                  { get; set; } = "INZ027";
     public int    CheckIntervalMinutes  { get; set; } = 5;
     public int    RepostIntervalMinutes { get; set; } = 60;
     public bool   PostAllClear          { get; set; } = true;

@@ -41,6 +41,7 @@ public static class YanWindow
             appState.RepostMinutes,
             appState.PollsRun,
             appState.PostedToday,
+            appState.Zone,
             Uptime     = appState.UptimeString,
             LastPollAt = appState.LastPollTime,
             NextPollAt = appState.NextPollTime,

@@ -41,6 +41,7 @@ public sealed class AppState
     public bool IncludeInstr     => _baseSettings.IncludeInstructions;
     public int  MaxDescChars     => _baseSettings.MaxDescriptionChars;
     public string WebhookUrl     => _baseSettings.WebhookUrl;
+    public string Zone           => _baseSettings.Zone;
 
     public List<NwsFeature> CurrentAlerts
     {

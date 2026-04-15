@@ -26,7 +26,8 @@ public sealed class MonitorWorker : BackgroundService
             return;
         }
 
-        _logger.LogInformation("Mr. YAN starting — GUI available at http://localhost:5000");
+        _logger.LogInformation(
+            "Mr. YAN starting — zone: {Zone} — GUI at http://localhost:5000", _state.Zone);
 
         await _chat.PostStartupAsync();
         _monitor.Start();

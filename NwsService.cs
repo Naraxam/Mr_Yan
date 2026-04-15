@@ -6,6 +6,7 @@ namespace MRYAN;
 public sealed class NwsService
 {
     private readonly LogStore _log;
+    private readonly AppState _state;
 
     private static readonly HttpClient _http = new(new SocketsHttpHandler
     {
@@ -26,13 +27,13 @@ public sealed class NwsService
         PropertyNameCaseInsensitive = true
     };
 
-    public NwsService(LogStore log) => _log = log;
+    public NwsService(LogStore log, AppState state) { _log = log; _state = state; }
 
     public async Task<List<NwsFeature>> GetActiveAlertsAsync()
     {
         try
         {
-            var response = await _http.GetAsync("alerts/active?zone=INZ027");
+            var response = await _http.GetAsync($"alerts/active?zone={_state.Zone}");
             response.EnsureSuccessStatusCode();
 
             var collection = await response.Content

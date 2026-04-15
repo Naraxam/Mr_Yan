@@ -83,7 +83,7 @@ public sealed class AlertMonitor
 
     private async Task PollAsync()
     {
-        _log.Info("Polling NWS for Monroe County, IN alerts…");
+        _log.Info($"Polling NWS alerts for zone {_state.Zone}…");
         _state.RecordPoll();
 
         var alerts = await _nws.GetActiveAlertsAsync();
@@ -108,7 +108,7 @@ public sealed class AlertMonitor
 
         if (alerts.Count == 0)
         {
-            _log.Info("No active alerts for Monroe County, IN");
+            _log.Info($"No active alerts for zone {_state.Zone}");
             return;
         }
 

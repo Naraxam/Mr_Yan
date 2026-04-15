@@ -186,7 +186,7 @@ textarea.msg-input::placeholder{color:var(--muted)}
 </div>
 <div class="statusbar">
   <div><span class="sb-dot" id="conn-dot" style="background:var(--amber)"></span><span id="conn-txt">Connecting&#8230;</span></div>
-  <div><span class="sb-dot" style="background:var(--purple)"></span>Monroe County, IN &#183; INZ027</div>
+  <div><span class="sb-dot" style="background:var(--purple)"></span><span id="sb-zone">Monroe County, IN &#183; INZ027</span></div>
   <div style="margin-left:auto"><span id="sb-time"></span></div>
 </div>
 <div class="toast" id="toast"></div>
@@ -256,6 +256,7 @@ function applyState(s){
   document.getElementById('r-repost').textContent =(s.repostMinutes||repostMin)+' min';
   document.getElementById('r-webhook').textContent=s.webhookOk?'Configured \u2713':'NOT SET \u2717';
   document.getElementById('r-webhook').className  ='iv '+(s.webhookOk?'cg':'cr');
+  if(s.zone) document.getElementById('sb-zone').textContent='Zone '+s.zone;
 
   renderAlerts(s.alerts, s.running);
   document.getElementById('conn-dot').style.background='var(--green)';
