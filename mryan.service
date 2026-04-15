@@ -1,0 +1,18 @@
+[Unit]
+Description=Mr. YAN – Meteorological Responses Your Accurate Notification
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=mryan
+WorkingDirectory=/opt/mryan
+ExecStart=/opt/mryan/MRYAN --headless
+Restart=on-failure
+RestartSec=15
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=mryan
+
+[Install]
+WantedBy=multi-user.target
